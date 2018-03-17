@@ -1,0 +1,11 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+  - name: install httpd
+    yum: name=httpd state=latest
+    when: ansible_os_family == 'RedHat'
+  - name:
+    service:  name=httpd state=restarted
+    when: ansible_os_family == 'RedHat'
+
